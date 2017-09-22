@@ -1,7 +1,7 @@
 # Nodule
 low level ( char parsing ) generalised XML parser for Haxe
 
-The trace output of the main example, you can see how it's fairly easy to extract information, probably needs more thought in terms of accessing data, but I think perhaps it could make a good base for custom parsing of xml.
+The trace output of the main example, you can see how it's fairly easy to extract information, probably needs more thought in terms of accessing data, but I think perhaps it could make a good base for custom parsing of dynamic xml.
 ```
 _____________  _.js:46:3
 testing test3  _.js:47:3
