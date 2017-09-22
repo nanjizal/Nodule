@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<family>
+    <father name = "Kawasaki" test = "bill" test2="fred">Yasuhisa</father>
+    <mother>Chizuko</mother>
+    <children>
+        <girl>Shiori</girl>
+        <boy>Yusuke</boy>
+        <boy>Kairi fred</boy>
+    </children> 
+</family>  

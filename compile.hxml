@@ -1,0 +1,17 @@
+-resource testxml/test0.xml@test0
+-resource testxml/test1.xml@test1
+-resource testxml/test2.xml@test2
+-resource testxml/test3.xml@test3
+-resource testxml/test4.xml@test4
+-resource testxml/test5.xml@test5
+-resource testxml/test6.xml@test6
+-resource testxml/test8.xml@test8
+-js _.js 
+-main Main
+# -D js-flatten 
+# -D source-map
+# -D debug
+# -D source-map-content
+--next
+-cmd echo '<!DOCTYPE html><meta charset="UTF-8"><html><body><script src="_.js"></script></body></html>' >index.html
+-cmd open ./index.html
