@@ -8,3 +8,6 @@ nodule.Nodule is used to store nodes or attributes with data stored as a double 
 Added a parser that creates an XML structure.
 
 Added toString for Nodule.
+
+See Console log trace for the test here:
+https://rawgit.com/nanjizal/Nodule/master/index.html
