@@ -11,3 +11,5 @@ Added toString for Nodule.
 
 See Console log trace for the test here:
 https://rawgit.com/nanjizal/Nodule/master/index.html
+
+Best viewed in firefox rather than chrome because firefox will crop the xml print outs making it easier to see the timing results.
