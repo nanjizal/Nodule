@@ -5,7 +5,21 @@
 -resource testxml/test4.xml@test4
 -resource testxml/test5.xml@test5
 -resource testxml/test6.xml@test6
+-resource testxml/test7.xml@test7
 -resource testxml/test8.xml@test8
+-resource testdox/cpp.xml@cpp
+-resource testdox/cs.xml@cs
+-resource testdox/flash.xml@flash
+-resource testdox/hl.xml@hl
+-resource testdox/java.xml@java
+-resource testdox/js.xml@js
+-resource testdox/lua.xml@lua
+-resource testdox/macro.xml@macro
+-resource testdox/neko.xml@neko
+-resource testdox/php.xml@php
+-resource testdox/python.xml@python
+
+
 -js _.js 
 -main Main
 # -D js-flatten 
