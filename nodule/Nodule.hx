@@ -37,7 +37,7 @@ class Nodule {
     public var nextSister: Nodule;
     public var prevSister: Nodule;
     public var parent: Nodule;
-    public function attributes( arr: ArrayPair){
+    public function attributes( arr: AttributePairs ){
         if( firstAttribute != null ) firstAttribute.sistersNextArray( arr );
         return arr;
     }
@@ -45,7 +45,27 @@ class Nodule {
         if( firstChild != null ) firstChild.sistersNextArray( arr );
         return arr;
     }
-    public function sistersNextArray( arr: ArrayPair ){
+    public function childNodules( arr: Array<Nodule> ){
+        if( firstChild != null ) {
+            arr[0] = firstChild;
+            firstChild.sistersNextNodules( arr );
+        }
+        return arr;
+    }
+    public function sistersNextNodules( arr: Array<Nodule> ){
+        var len = arr.length;
+        var scope = this;
+        var n = scope.nextSister;
+        while( n != null  ){
+            arr[ len++ ] = n;
+            scope = n;
+            n = scope.nextSister;
+        }
+        return arr;
+    }
+    
+    
+    public function sistersNextArray( arr: Array<{ name: String,value: String }> ){
         var len = 0;
         if( this.content != null ) arr[len++]=  {name: this.name, value: this.content };
         var scope = this;
@@ -91,5 +111,46 @@ class Nodule {
             scope = n;
             n = scope.nextSister;
         }
+    }
+    @:keep
+    public function toStringPretty( ?tab: String = ''){
+        var atPair: AttributePairs = attributes( new AttributePairs() );
+        var out =  tab + '<' + name + atPair;
+        var childs: Array<Nodule> = childNodules( new Array() );
+        if( content != null ){
+            if( content.length > 45 ){ // when line too long start on new line indented
+                out += '>\n' + tab + '   ' + content + '\n' + tab + '</'+name + '>\n';
+            } else {
+                out += '>' + content + '</'+name + '>\n';
+            }
+        } else if( childs != null ) {
+            out += '>\n';    
+            for( i in 0...childs.length ){
+                out += childs[i].toStringPretty( tab + '   ' );
+            }
+            out += tab + '</'+name + '>\n';
+        } else {
+            out += '/>\n';
+        }
+        return out;
+    }
+    
+    @:keep
+    public function toString(){
+        var atPair: AttributePairs = attributes( new AttributePairs() );
+        var out =  '<' + name + atPair;
+        var childs: Array<Nodule> = childNodules( new Array() );
+        if( content != null ){
+            out += '>' + content + '</'+name + '>';
+        } else if( childs != null ) {
+            out += '>';    
+            for( i in 0...childs.length ){
+                out += childs[i].toString();
+            }
+            out += '</'+name + '>';
+        } else {
+            out += '/>';
+        }
+        return out;
     }
 }
