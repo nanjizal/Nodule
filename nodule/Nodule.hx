@@ -153,4 +153,147 @@ class Nodule {
         }
         return out;
     }
+    #if kha
+    public function toKhaScreen(  g:    kha.graphics2.Graphics
+                                , tab:  String
+                                , x:    Float, y: Float
+                                , font: kha.Font
+                                , size: Int
+                                , coloring: { arrows: kha.Color, nodeName: kha.Color
+                                , attributeName: kha.Color, attributeEquals: kha.Color, attributeQuotes: kha.Color, attributeValue: kha.Color
+                                , content: kha.Color, backSlash: kha.Color } ): Float {
+        var dx: Float = x;
+        var dy: Float = y;
+        var str: String = '';
+        var strHi =  g.font.height( size );
+        g.font = font;
+        g.fontSize = size;
+        trace( 'drawing ');
+        str = tab + '<';
+        g.color = coloring.arrows;
+        g.drawString( str, dx, dy );
+        trace( 'drawing ' + str );
+        dx += g.font.width( size, str );
+        str = name;
+        g.color = coloring.nodeName;
+        g.drawString( str, dx, dy );
+        dx += g.font.width( size, str );
+        var atPair: AttributePairs = attributes( new AttributePairs() );
+        var at = { name: String, value: String }
+        for( i in 0...atPair.length ){
+            at = cast atPair[ i ];
+            str = ' ' + at.name;
+            g.color = coloring.attributeName;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            str = '=';
+            g.color = coloring.attributeEquals;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            str = '"';
+            g.color = coloring.attributeQuotes;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            str = cast at.value;
+            g.color = coloring.attributeValue;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            str = '" ';
+            g.color = coloring.attributeQuotes;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+        }
+        var childs: Array<Nodule> = childNodules( new Array() );
+        if( content != null ){
+            str = '>';
+            g.color = coloring.arrows;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            var strIter = new nodule.StringCodeIterator( content );
+            strIter.next();
+            strIter.addChar();
+            str = strIter.toStr();
+            while( strIter.hasNext() ){
+                switch( strIter.c ){
+                    case '\r'.code | '\n'.code:
+                        if( str != '' ){
+                            g.color = coloring.content;
+                            g.drawString( str, dx, dy );
+                            dx += g.font.width( size, str );
+                        }
+                        strIter.resetBuffer();
+                        strIter.next();
+                        dy = dy + strHi;
+                        dx = g.font.width( size, tab );  
+                    default:
+                        strIter.next();
+                        strIter.addChar();
+                        str = strIter.toStr();
+                }
+            }
+            str = strIter.toStr();
+            if( str != '' ){
+                g.color = coloring.content;
+                g.drawString( str, dx, dy );
+                dx += g.font.width( size, str );
+            }
+            str = '<';
+            g.color = coloring.arrows;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            str = '/';
+            g.color = coloring.backSlash;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            str = name;
+            g.color = coloring.nodeName;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            str = '>';
+            g.color = coloring.arrows;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+        } else if( childs != null ) {
+            str = '>';
+            g.color = coloring.arrows;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            for( i in 0...childs.length ){
+                dy = dy + strHi;
+                dx = 0;
+                dy = childs[ i ].toKhaScreen(  g, tab + '   ', dx, dy, font, size, coloring );
+            }
+            dy = dy + strHi;
+            dx = 0; 
+            str = tab + '<';
+            g.color = coloring.arrows;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            str = '/';
+            g.color = coloring.backSlash;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            str = name;
+            g.color = coloring.nodeName;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            str = '>';
+            g.color = coloring.arrows;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+        } else {
+            str = '>';
+            g.color = coloring.arrows;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            str = '/';
+            g.color = coloring.backSlash;
+            g.drawString( str, dx, dy );
+            dx += g.font.width( size, str );
+            dy = dy + strHi;
+            dx = 0; 
+        }
+        return dy;
+    }
+    #end
 }
