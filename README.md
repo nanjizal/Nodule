@@ -1,14 +1,18 @@
 # Nodule
+
 low level ( char parsing ) generalised XML parser for Haxe
 
-The trace output of the main example, you can see how it's fairly easy to extract information.
-
 ## Nodule 
+
 Nodule is used to store 'nodes' or 'attributes' with data stored as a double linked tree structure, it keeps access to it's 'sisters', 'firstChild', 'firstAttribute' and 'parent'.
-The reader is also setup to process normal XML structures.
+The reader is also setup to process normal XML structures but may not provide any noticable speed advantages and may no be as robust?
+
+## Console Comparisoms
 
 See Console log trace for the test here shows comparative parsing speed ( best viewed in firefox ).
 https://rawgit.com/nanjizal/Nodule/master/index.html
+
+## Using Nodule to render XML in Kha
 
 Recently added a toKhaScreen method to Nodule, this is fast enough to be called in the Kha render loop to render the Nodule as XML with color coding.
 
