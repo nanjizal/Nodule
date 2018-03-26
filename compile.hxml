@@ -7,6 +7,7 @@
 -resource testxml/test6.xml@test6
 -resource testxml/test7.xml@test7
 -resource testxml/test8.xml@test8
+-resource testxml/test9.xml@test9
 -resource testdox/cpp.xml@cpp
 -resource testdox/cs.xml@cs
 -resource testdox/flash.xml@flash

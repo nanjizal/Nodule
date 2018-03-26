@@ -3,7 +3,7 @@ import nodule.*;
 import DevTools.*;
 class Main { static public function main():Void { new Main(); }
     public function new(){
-        //var tests = [ 'test0','test1','test2','test3','test4','test5','test8'];
+        //var tests = [ 'test0','test1','test2','test3','test4','test5','test8','test9'];
         //var tests = ['test7'];
         //for( test in tests ) testParse( test );
         var doxTest = ['cpp','cs','flash','hl','java','js','lua','macro','neko','php','python'];
