@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<family>
+    <father>
+        <children>
+            <son color="#ff0000"/>
+        </children>
+        <children>
+            <son color="#00ff00"/>
+        </children>
+    </father>
+</family>  

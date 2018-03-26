@@ -3,8 +3,8 @@ import nodule.*;
 import DevTools.*;
 class Main { static public function main():Void { new Main(); }
     public function new(){
-        //var tests = [ 'test0','test1','test2','test3','test4','test5','test8','test9'];
-        //var tests = ['test7'];
+        //var tests = [ 'test0','test1','test2','test3','test4','test5','test8','test9','test10','test11'];
+        //var tests = ['salsa'];
         //for( test in tests ) testParse( test );
         var doxTest = ['cpp','cs','flash','hl','java','js','lua','macro','neko','php','python'];
         for( test in doxTest ) testParse( test );
@@ -32,7 +32,7 @@ class Main { static public function main():Void { new Main(); }
         measure( s0 = x3.toStringPretty() ); 
         measure( s1 = x0.toString() );
         trace( 'nodule to string ' + s0 );
-        trace( 'xml to string ' + s1 );
+        //trace( 'xml to string ' + s1 );
         //trace( x1.toString() );
         //trace( x4.toString() );
     }

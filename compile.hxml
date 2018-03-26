@@ -8,6 +8,10 @@
 -resource testxml/test7.xml@test7
 -resource testxml/test8.xml@test8
 -resource testxml/test9.xml@test9
+-resource testxml/test10.xml@test10
+-resource testxml/test11.xml@test11
+-resource testxml/westCountrySalsaVector2.fxg@salsa
+-resource testxml/salsaShort.xml@salsaShort
 -resource testdox/cpp.xml@cpp
 -resource testdox/cs.xml@cs
 -resource testdox/flash.xml@flash
