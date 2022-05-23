@@ -25,12 +25,12 @@
 -resource testdox/python.xml@python
 
 
--js _.js 
+-js test.js 
 -main Main
 # -D js-flatten 
 # -D source-map
 # -D debug
 # -D source-map-content
 --next
--cmd echo '<!DOCTYPE html><meta charset="UTF-8"><html><body><script src="_.js"></script></body></html>' >index.html
+-cmd echo '<!DOCTYPE html><meta charset="UTF-8"><html><body><script src="test.js"></script></body></html>' >index.html
 -cmd open ./index.html
